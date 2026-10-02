@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+/*
+|--------------------------------------------------------------------------
+| Base
+|--------------------------------------------------------------------------
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  min-height: 100%;
+}
+
+html {
+  background: #050812;
+}
+
+body {
+  min-height: 100dvh;
+
+  overflow: hidden;
+
+  background: #050812;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Selection
+|--------------------------------------------------------------------------
+*/
+
+::selection {
+  background: rgba(96, 165, 250, 0.35);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Window Enter
+|--------------------------------------------------------------------------
+*/
+
+@keyframes os-window-enter {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px)
+      scale(0.97);
+
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+}
+
+.os-window-enter {
+  animation:
+    os-window-enter
+    180ms
+    cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    )
+    both;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Window Exit
+|--------------------------------------------------------------------------
+*/
+
+@keyframes os-window-exit {
+  from {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+
+    transform:
+      translateY(8px)
+      scale(0.96);
+
+    filter: blur(2px);
+  }
+}
+
+.os-window-exit {
+  pointer-events: none;
+
+  animation:
+    os-window-exit
+    180ms
+    cubic-bezier(
+      0.4,
+      0,
+      1,
+      1
+    )
+    both;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Command Palette
+|--------------------------------------------------------------------------
+*/
+
+@keyframes os-command-palette-enter {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-8px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+.os-command-palette {
+  animation:
+    os-command-palette-enter
+    150ms
+    cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    )
+    both;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Mobile App Transition
+|--------------------------------------------------------------------------
+*/
+
+@media (
+  max-width: 767px
+) {
+  @keyframes os-mobile-app-enter {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(24px)
+        scale(0.99);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        scale(1);
+    }
+  }
+
+  @keyframes os-mobile-app-exit {
+    from {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        scale(1);
+    }
+
+    to {
+      opacity: 0;
+
+      transform:
+        translateY(26px)
+        scale(0.99);
+    }
+  }
+
+  .os-window-enter {
+    animation-name:
+      os-mobile-app-enter;
+
+    animation-duration:
+      220ms;
+  }
+
+  .os-window-exit {
+    animation-name:
+      os-mobile-app-exit;
+
+    animation-duration:
+      180ms;
+  }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Scrollbars
+|--------------------------------------------------------------------------
+*/
+
+* {
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    rgba(
+      148,
+      163,
+      184,
+      0.35
+    )
+    transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background:
+    rgba(
+      148,
+      163,
+      184,
+      0.3
+    );
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(
+      148,
+      163,
+      184,
+      0.5
+    );
+}
+
+/*
+|--------------------------------------------------------------------------
+| Reduced Motion
+|--------------------------------------------------------------------------
+|
+| 운영체제에서
+| "동작 줄이기"를 설정한 사용자에게
+| 불필요한 animation을 강제로 보여주지 않는다.
+|
+*/
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:
+      auto !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    transition-delay:
+      0ms !important;
+  }
+}
