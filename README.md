@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## How to write on myBlog
+---
+title: ""
+categoryId: ""
+category: ""
+createdAt: ""
+updatedAt: ""
+status: "Learning"
+--- <--- This is first thing, title, tag, date, etc...
+second thing is just writing down what you wanna write..
+Good luck everyday.
